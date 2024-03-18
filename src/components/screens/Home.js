@@ -1,12 +1,13 @@
 import React,{useContext, useEffect, useState} from "react";
 import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
-
+import axios from 'axios'
 const Home = () => {
     const [data,setData] = useState([])
+    const serverUrl = 'https://instagram-server-gzf9.onrender.com/allpost';
     const {state,dispatch} = useContext(UserContext)
     useEffect(()=>{
-        fetch('/allpost',{
+        fetch(serverUrl,{
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
             }
