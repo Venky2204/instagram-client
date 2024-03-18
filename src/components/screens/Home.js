@@ -11,8 +11,7 @@ const Home = () => {
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("jwt")
             }
-        }).then(res => res.json())
-        .then(result=>{
+        }).then(result=>{
             setData(result.posts)
         })
     },[])
