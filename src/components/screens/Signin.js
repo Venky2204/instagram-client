@@ -2,27 +2,32 @@ import React,{useState,useContext}from 'react'
 import { Link , useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
 import M from 'materialize-css';
+import axios from 'axios'
 
+import axios from 
 const Signin = () => {
     const {state,dispatch} = useContext(UserContext)
     const navigate = useNavigate()
     const [password,setPassword] = useState("")
     const [email,setEmail] = useState("")
-
-    const PostData = () =>{
+    const axios = require('axios');
+    const serverUrl = 'https://instagram-server-gzf9.onrender.com/signin';
+    const PostData = async () =>{
         if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/.test(email)){
             M.toast({html: "Invalid email",classes:"#c62828 red darken-3"})
             return;
         }
-        fetch("/signin",{
-            method:"post",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                password,
-                email
-            })
+        
+        // fetch("/signin",{
+        //     method:"post",
+        //     headers:{
+        //         "Content-Type":"application/json"
+        //     },
+        //     body:JSON.stringify({
+        //         password,
+        //         email
+        //     })
+        axios.post(serverUrl,{email,password})
         }).then(res => res.json())
         .then(data=>{
             console.log(data)
