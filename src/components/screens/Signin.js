@@ -10,7 +10,7 @@ const Signin = () => {
     const navigate = useNavigate()
     const [password,setPassword] = useState("")
     const [email,setEmail] = useState("")
-    const axios = require('axios');
+    // const axios = require('axios');
     const serverUrl = 'https://instagram-server-gzf9.onrender.com/signin';
     const PostData = async () =>{
         if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/.test(email)){
